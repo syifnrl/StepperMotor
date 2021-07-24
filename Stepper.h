@@ -10,6 +10,33 @@
     dan wiring secara common cathode configuration
 */
 
+/*Example:
+    #include "mbed.h"
+#include "Stepper.h"
+#define steps_per_rev 200 //steps the stepper takes per one rotation
+
+Serial pc(USBTX, USBRX);
+Stepper myStepper(PC_8, PC_6);
+long posisi;
+             
+
+int main()
+{
+    // Initialise the digital pin LED1 as an output
+    myStepper.speed(1500); //set stepper speed in microseconds. The default speed is 1000 microseconds
+    while (1) {
+        myStepper.step(1350); //stepper rotating clockwise
+        posisi = myStepper.readPosition(); //save position
+        pc.printf("Posisi: %d\n", posisi);
+        wait(1);
+        myStepper.step(-1350); //stepper rotating counter clockwise
+        posisi = myStepper.readPosition();
+        pc.printf("Posisi: %d\n", posisi);
+        wait(1);
+    }
+}
+*/
+
 class Stepper{
     public:
     /*common cathode configuration used 2 digital pins, CLK+ and CW+
